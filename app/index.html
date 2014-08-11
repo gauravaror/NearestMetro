@@ -2,16 +2,39 @@
 <html ng-app="NearestMetro">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Find Nearest Delhi Metro station for yor location</title>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="controller/app.js""></script>
+    <script src="controller/app.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFmsI5LcLFO1JSrVCvD1UEzvRL0coSLVQ">
+    </script>
+     <script href="bower_components/bootstrap/dist/js/bootstrap.min.js" ></script>
+     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/nearestmetro.css" rel="stylesheet">
 </head>
 <body>
-<div ng-controller="ngAppDemoController">
-    <p>Name: <input type="text" ng-model="name"></p>
-    <p ng-bind="name"></p>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Find Nearest Metro Station</a>
+    </div>
+</nav>
+<div ng-controller="ngAppDemoController" class="maincontainer" align="center">
+    <script src="js/maps.js"></script>
+    <label>Location: </label>
+     <input type="text" ng-model="name">
+    <button type="button" class="btn btn-primary" ng-Click="decodeAddress()">Search</Button>
 
-<p> ATT: angular.js is working {{1+2}} , {{name}}</p>
+<p> We are trying to find the nearest metro station from,{{name}} . Please Wait!!!</p>
 </div>
+<div id="map-canvas"/>
 </body>
 </html>
