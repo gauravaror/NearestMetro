@@ -3,6 +3,7 @@ var map;
 var LangLatList = [];
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
+var markerStation = null;
 
 
 function initialize() {
@@ -116,7 +117,7 @@ function getTop10DistanceGMAP(locat,addr,allMetroStations) {
 }
 
 function codeAddress(address,allMetroStations) {
-  geocoder.geocode( { 'address': address}, function(results, status) {
+  geocoder.geocode( { 'address': address +" Delhi"}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
         var metroStationDistances = getDistances(results[0].geometry.location,allMetroStations);
@@ -129,6 +130,9 @@ function codeAddress(address,allMetroStations) {
 }
 
 function proceedcodeAddress(finalMetroStationDistance,loctn) {
+        if(markerStation != null) {
+            markerStation.setMap(null);
+        }
         finalMetroStationDistance.sort(compare);
         var metroStationDistances = finalMetroStationDistance;
   //    alert("address : "+address+" "+results[0].geometry.location);
@@ -144,6 +148,7 @@ function proceedcodeAddress(finalMetroStationDistance,loctn) {
           position: destinationStation,
           title:" Nearest station is : " +metroStationDistances[0]["name"] + " with distance of "+metroStationDistances[0]["distance"]+" KM"
       });
+      markerStation = markerstation;
        var request = {
           origin:loctn,
           destination:destinationStation,
