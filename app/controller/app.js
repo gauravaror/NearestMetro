@@ -5,6 +5,7 @@ app.controller('ngAppDemoController',[ '$scope','DelhiMetro', function ($scope,D
     //The body of demo controller
     
     $scope.decodeAddress = function () {
+        $scope.rankedMetroStations = [];
         codeAddress($scope.name,$scope.metroStations);
     }
 
@@ -24,4 +25,5 @@ app.controller('ngAppDemoController',[ '$scope','DelhiMetro', function ($scope,D
     $scope.metroStations = DelhiMetro.query(function() {
             //$scope.plotStations();
         });
+    $scope.rankedMetroStations = [];
 }]);

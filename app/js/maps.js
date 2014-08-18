@@ -129,6 +129,13 @@ function codeAddress(address,allMetroStations) {
   });
 }
 
+function changeRankedMetroStations(message) {
+    var scope = angular.element($("#controllerouter")).scope();
+    scope.$apply(function(){
+        scope.rankedMetroStations = message;
+    })
+}
+
 function proceedcodeAddress(finalMetroStationDistance,loctn) {
         if(markerStation != null) {
             markerStation.setMap(null);
@@ -143,6 +150,7 @@ function proceedcodeAddress(finalMetroStationDistance,loctn) {
           title: address
       });*/
       console.log(metroStationDistances[0]["lat"]);
+      changeRankedMetroStations(metroStationDistances);
       var markerstation = new google.maps.Marker({
           map: map,
           position: destinationStation,
