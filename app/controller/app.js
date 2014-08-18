@@ -8,7 +8,9 @@ app.controller('ngAppDemoController',[ '$scope','DelhiMetro', function ($scope,D
         $scope.rankedMetroStations = [];
         codeAddress($scope.name,$scope.metroStations);
     }
-
+    $scope.clearDiv = function() {
+        $scope.rankedMetroStations = [];
+    }
     $scope.plotStations =  function() {
         for( var i=0; i < $scope.metroStations.length;i++) {
             setTimeout(function(j){

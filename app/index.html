@@ -32,7 +32,7 @@
 <div ng-controller="ngAppDemoController" class="maincontainer" align="center" id="controllerouter">
     <script src="js/maps.js"></script>
     <label>Location: </label>
-     <input type="text" ng-model="name">
+     <input type="text" ng-model="name" ng-change="clearDiv()">
     <button type="button" class="btn btn-primary" ng-Click="decodeAddress()">Search</Button>
 <div id="rank">
 <ul class="stations">
